@@ -1,0 +1,126 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+║              ⚡ ZENITSU ICON THEME - QUICK REFERENCE ⚡                  ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+CHOSEN THEME:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Tela-circle-orange-dark
+✓ Perfect orange color match (#FFA237)
+✓ Available in Arch official repos
+✓ Modern flat circular design
+✓ Active maintenance (2025_02_10)
+
+INSTALLATION (Run these commands):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Install theme:
+   cd ~/Project_Zenitsu_Theme
+   ./install_zenitsu_icons.sh
+
+2. Configure theme:
+   ./configure_zenitsu_icons.sh
+
+3. Restart applications or logout/login
+
+MANUAL INSTALLATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Install from repository
+sudo pacman -S tela-circle-icon-theme-orange
+
+# Update icon cache
+sudo gtk-update-icon-cache -f /usr/share/icons/Tela-circle-orange-dark
+
+# Apply with gsettings
+gsettings set org.gnome.desktop.interface icon-theme "Tela-circle-orange-dark"
+
+# Add to Hyprland startup
+echo 'exec-once = gsettings set org.gnome.desktop.interface icon-theme "Tela-circle-orange-dark"' >> ~/.config/hypr/UserConfigs/Startup_Apps.conf
+
+MULTI-LAYER PERSISTENCE STRATEGY:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Layer 1: Configuration Files
+  ~/.gtkrc-2.0                    (GTK-2.0 apps)
+  ~/.config/gtk-3.0/settings.ini  (GTK-3.0 apps)
+  ~/.config/gtk-4.0/settings.ini  (GTK-4.0 apps)
+
+Layer 2: gsettings (System-wide)
+  gsettings set org.gnome.desktop.interface icon-theme "..."
+
+Layer 3: Hyprland Startup (Persistence)
+  exec-once = gsettings set ... (in Startup_Apps.conf)
+
+WHY MULTI-LAYER?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Different apps read from different sources:
+- GTK-3/4: Check gsettings → config files
+- GTK-2: Only read ~/.gtkrc-2.0
+- Qt apps: Use Qt config or GTK fallback
+- Electron: May use any of the above
+
+All layers ensure 100% coverage and persistence!
+
+FILES CONFIGURED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ~/.gtkrc-2.0
+2. ~/.config/gtk-3.0/settings.ini
+3. ~/.config/gtk-4.0/settings.ini
+4. ~/.config/qt5ct/qt5ct.conf (optional)
+5. ~/.config/hypr/UserConfigs/Startup_Apps.conf
+
+VERIFICATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Check installation
+pacman -Q tela-circle-icon-theme-orange
+
+# Check current theme
+gsettings get org.gnome.desktop.interface icon-theme
+
+# Check config files
+cat ~/.config/gtk-3.0/settings.ini | grep icon
+
+# Check Hyprland startup
+grep "icon-theme" ~/.config/hypr/UserConfigs/Startup_Apps.conf
+
+# Test in file manager
+thunar &
+
+TROUBLESHOOTING:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Icons not showing?
+  → Rebuild cache: sudo gtk-update-icon-cache -f /usr/share/icons/Tela-circle-orange-dark
+  → Restart apps: pkill thunar && thunar &
+
+Not persisting after reboot?
+  → Check: grep "gsettings.*icon" ~/.config/hypr/UserConfigs/Startup_Apps.conf
+  → Add if missing
+
+Qt apps wrong icons?
+  → Set: export QT_QPA_PLATFORMTHEME=gtk2
+  → Or: echo 'env = QT_QPA_PLATFORMTHEME,gtk2' >> ~/.config/hypr/hyprland.conf
+
+THEME DETAILS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Name:     Tela-circle-orange-dark
+Package:  tela-circle-icon-theme-orange
+Location: /usr/share/icons/Tela-circle-orange-dark/
+Version:  2025_02_10-1
+Colors:   Orange (#FFA237), Yellow (#FFE66D)
+Style:    Flat, circular, modern
+
+ALTERNATIVE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+If you want thunder yellow emphasis instead:
+  sudo pacman -S tela-circle-icon-theme-yellow
+  gsettings set org.gnome.desktop.interface icon-theme "Tela-circle-yellow-dark"
+
+BACKUPS CREATED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+~/.config/gtk-3.0/settings.ini.backup_YYYYMMDD_HHMMSS
+~/.gtkrc-2.0.backup_YYYYMMDD_HHMMSS
+~/.config/hypr/UserConfigs/Startup_Apps.conf.backup_YYYYMMDD_HHMMSS
+
+SCRIPTS CREATED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+~/Project_Zenitsu_Theme/install_zenitsu_icons.sh
+~/Project_Zenitsu_Theme/configure_zenitsu_icons.sh
+
+⚡ ZENITSU THUNDER ICONS! ⚡

@@ -1,0 +1,99 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+║          ⚡ ZENITSU NOTIFICATIONS - BOTTOM-UP SLIDING SYSTEM ⚡          ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+WHAT WAS IMPLEMENTED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ SwayNC notification daemon (Wayland-native)
+✓ Bottom-up sliding animation (0.3s smooth cubic-bezier)
+✓ Position: bottom-center (above Waybar)
+✓ Complete Zenitsu theme styling
+✓ Sharp borders (no rounded corners)
+✓ Electrical glow effects
+✓ Critical notification lightning flashes
+
+DAEMON CHOICE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SWAYNC (Sway Notification Center)
+- Wayland-native with full Hyprland support
+- CSS-based animations (full control)
+- Independent XY positioning
+- Notification history panel
+- Already installed in your system
+
+FILES MODIFIED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ~/.config/swaync/config.json  (position & animation settings)
+2. ~/.config/swaync/style.css     (Zenitsu theme & slide animation)
+
+ANIMATION FLOW:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                    ┌────────────────────┐
+                    │  ⚡ Notification   │
+                    │  rises like        │ ↑ Slides up
+                    │  lightning!        │ (0.3s)
+                    └────────────────────┘
+                    ═══════════════════════
+                    Bottom of screen
+                    (above Waybar)
+
+VISUAL STYLE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Background:  #0d0d0d (zenitsu-dark)
+Borders:     #FFA237 (haori orange) - sharp, angular
+Text:        #FFE66D (thunder yellow)
+Highlights:  #f9ff5e (lightning)
+Glow:        30px electric shadows
+Animation:   Smooth slide-up + pulsing glow
+
+URGENCY LEVELS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LOW        → Left orange border, 5s timeout
+NORMAL     → Full orange border, 10s timeout
+CRITICAL   → Electric yellow border, rapid flash, no timeout
+
+KEY SETTINGS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+positionX:        center
+positionY:        bottom
+transition-time:  300ms
+border-radius:    0 (sharp corners)
+animation:        slide-up + electric-pulse
+
+TEST NOTIFICATIONS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Normal:
+  notify-send "⚡ Test" "Normal notification" -u normal
+
+Critical:
+  notify-send "⚡ ALERT ⚡" "Critical!" -u critical
+
+Run all tests:
+  ./test_zenitsu_notifications.sh
+
+CONTROL CENTER:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Open/Close:  swaync-client -t
+Position:    Top-right (separate from popups)
+Features:    History, DND toggle, Clear All
+
+RESTART SWAYNC:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+pkill swaync && swaync &
+
+BACKUPS CREATED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+~/.config/swaync/config.json.backup_YYYYMMDD_HHMMSS
+~/.config/swaync/style.css.backup_YYYYMMDD_HHMMSS
+
+STATUS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ SwayNC running (PID 7347)
+✓ Position: bottom-center
+✓ Animation: slide-up (300ms)
+✓ Style: Zenitsu theme (sharp borders)
+✓ Glow effects: active
+✓ Critical flash: working
+✓ Backups: saved
+
+⚡ THUNDER RISES FROM BELOW! ⚡

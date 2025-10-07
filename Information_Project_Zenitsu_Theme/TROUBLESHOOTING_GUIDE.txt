@@ -1,0 +1,357 @@
+╔══════════════════════════════════════════════════════════════════╗
+║     ⚡⚡⚡ ZENITSU THEME - TROUBLESHOOTING GUIDE ⚡⚡⚡          ║
+║            Fix Common Issues with Thunder Breathing             ║
+╚══════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 TABLE OF CONTENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Icons Not Showing / Displaying as Boxes
+2. Waybar Disappears After Running electrify_icons_and_sounds.sh
+3. Click Sounds Not Playing
+4. Click Spark Animation Not Working
+5. General Waybar Issues
+6. How to Restore from Backup
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ ISSUE 1: ICONS NOT SHOWING / DISPLAYING AS BOXES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SYMPTOMS:
+  • Icons appear as empty squares, boxes, or question marks
+  • Some icons display correctly, others don't
+  • Waybar runs but looks broken
+
+ROOT CAUSE:
+  • Nerd Font not installed or not being used
+  • Font cache needs refresh
+  • Waybar config specifies wrong font
+
+FIX:
+
+Step 1: Check if Nerd Fonts are installed
+  $ fc-list | grep -i nerd
+
+  Expected output: List of Nerd Font files
+  If empty: Install Nerd Fonts
+
+Step 2: Install Nerd Fonts (if needed)
+  Arch/Manjaro:
+    $ sudo pacman -S ttf-jetbrains-mono-nerd ttf-fantasque-sans-mono-nerd
+  
+  Ubuntu/Debian:
+    $ sudo apt install fonts-jetbrains-mono fonts-fantasque-sans-mono
+  
+  Manual Install:
+    1. Download from: https://www.nerdfonts.com/
+    2. Extract to ~/.local/share/fonts/
+    3. Run: fc-cache -fv
+
+Step 3: Refresh font cache
+  $ fc-cache -fv
+
+Step 4: Restart Waybar
+  $ pkill waybar && waybar &
+
+Step 5: If still not working, check Waybar CSS font family
+  • Edit: ~/.config/waybar/style.css (or Thunder Glow.css)
+  • Find: font-family:
+  • Change to: font-family: "JetBrainsMono Nerd Font";
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ ISSUE 2: WAYBAR DISAPPEARS AFTER RUNNING SCRIPT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SYMPTOMS:
+  • Waybar visible before running script
+  • After running electrify_icons_and_sounds.sh, waybar vanishes
+  • No bar visible on screen
+
+ROOT CAUSES:
+  • CSS file corrupted with duplicate entries
+  • Module file has syntax errors
+  • Waybar crashed due to invalid configuration
+
+FIX:
+
+QUICK FIX - Use the fix utility:
+  $ cd ~/Project_Zenitsu_Theme
+  $ ./fix_zenitsu_icons.sh
+
+MANUAL FIX:
+
+Step 1: Check if Waybar is actually running
+  $ ps aux | grep waybar
+
+  If not running → Configuration error
+  If running → Display/CSS issue
+
+Step 2: Kill and restart Waybar with debug output
+  $ pkill waybar
+  $ waybar -l debug 2>&1 | tee /tmp/waybar_debug.log &
+
+  Check the log for errors:
+  $ cat /tmp/waybar_debug.log
+
+Step 3: Clean up CSS duplicates
+  $ cd ~/Project_Zenitsu_Theme
+  $ ./clean_css_duplicates.sh
+
+Step 4: Verify module configuration
+  $ cat ~/.config/waybar/ZenitsuModules | grep -A 5 "network"
+
+  Look for syntax errors (missing quotes, commas, braces)
+
+Step 5: Restore from backup if needed
+  $ cd ~/.config/waybar
+  $ ls -lt ZenitsuModules.backup_* | head -1
+  
+  Copy the latest backup:
+  $ cp ZenitsuModules.backup_YYYYMMDD_HHMMSS ZenitsuModules
+
+Step 6: Re-apply icons properly
+  $ cd ~/Project_Zenitsu_Theme
+  $ ./apply_electrical_icons.sh
+
+Step 7: Restart Waybar
+  $ pkill waybar && waybar &
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ ISSUE 3: CLICK SOUNDS NOT PLAYING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SYMPTOMS:
+  • Visual spark effects work
+  • No sound when clicking modules
+  • Sound files exist but don't play
+
+ROOT CAUSES:
+  • Sox not installed
+  • PulseAudio/PipeWire not configured
+  • Sound files not generated
+  • Volume muted
+
+FIX:
+
+Step 1: Check if sound files exist
+  $ ls -lh ~/Project_Zenitsu_Theme/sounds/
+  
+  Should see:
+    electric_spark.wav
+    thunder_click.wav
+    play_spark.sh
+
+Step 2: Install Sox (if missing)
+  Arch/Manjaro:
+    $ sudo pacman -S sox
+  
+  Ubuntu/Debian:
+    $ sudo apt install sox
+
+Step 3: Generate sound files
+  $ cd ~/Project_Zenitsu_Theme
+  $ ./electrify_icons_and_sounds.sh
+
+Step 4: Test sound playback
+  $ ~/Project_Zenitsu_Theme/sounds/play_spark.sh
+
+  If no sound:
+  • Check system volume
+  • Check PulseAudio: $ pactl info
+  • Check PipeWire: $ pw-cli info
+
+Step 5: Test with paplay directly
+  $ paplay ~/Project_Zenitsu_Theme/sounds/electric_spark.wav
+
+Step 6: If still not working, check audio system
+  PulseAudio:
+    $ systemctl --user status pulseaudio
+  
+  PipeWire:
+    $ systemctl --user status pipewire pipewire-pulse
+
+Note: Click sounds require module actions to be configured
+      (This is still in development for Waybar integration)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ ISSUE 4: CLICK SPARK ANIMATION NOT WORKING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SYMPTOMS:
+  • Icons display correctly
+  • No yellow flash when clicking modules
+  • No visual feedback on click
+
+ROOT CAUSES:
+  • CSS animation not added or missing
+  • Wrong CSS file being used
+  • CSS has syntax errors
+
+FIX:
+
+Step 1: Check if Thunder Glow CSS is active
+  $ readlink -f ~/.config/waybar/style.css
+  
+  Should point to Thunder Glow or Thunder Breathing CSS
+
+Step 2: Check if animation exists in CSS
+  $ grep -c "CLICK SPARK ANIMATION" ~/.config/waybar/style/*.css
+
+  Should show 1 for Thunder Glow CSS
+
+Step 3: Add/fix animation CSS
+  $ cd ~/Project_Zenitsu_Theme
+  $ ./clean_css_duplicates.sh
+
+Step 4: Verify CSS has the animation
+  $ tail -50 "~/.config/waybar/style/⚡ [Zenitsu] Thunder Glow.css"
+
+  Should see spark-flash animation at the end
+
+Step 5: Restart Waybar to apply changes
+  $ pkill waybar && waybar &
+
+Step 6: Test by clicking any module
+  • Click on clock, network, or any icon
+  • Should see instant yellow flash
+  • Flash lasts ~150ms
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ ISSUE 5: GENERAL WAYBAR ISSUES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Waybar crashes immediately:
+  • Check config syntax: JSON/JSONC must be valid
+  • Run: waybar -l debug to see errors
+  • Restore from backup if needed
+
+Waybar shows but no modules:
+  • Check module configuration paths
+  • Verify all include files exist:
+    - ZenitsuModules
+    - ZenitsuModulesCustom
+    - ModulesWorkspaces
+    - etc.
+
+Waybar position wrong:
+  • Edit config "position": "top" or "bottom"
+  • Check "margin-top" and other spacing settings
+
+Modules not updating:
+  • Kill and restart: pkill waybar && waybar &
+  • Check specific module configuration
+  • Some modules need additional programs (nmtui, blueman, etc.)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ ISSUE 6: HOW TO RESTORE FROM BACKUP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WHEN TO RESTORE:
+  • Icons completely broken
+  • Waybar won't start
+  • Configuration corrupted
+  • Want to revert changes
+
+RESTORE MODULES:
+
+Step 1: Find available backups
+  $ ls -lt ~/.config/waybar/ZenitsuModules.backup_* | head -5
+
+Step 2: Choose a backup (most recent usually)
+  $ cp ~/.config/waybar/ZenitsuModules.backup_YYYYMMDD_HHMMSS \
+       ~/.config/waybar/ZenitsuModules
+
+Step 3: Restart Waybar
+  $ pkill waybar && waybar &
+
+RESTORE CSS:
+
+Step 1: Find CSS backups
+  $ ls -lt ~/.config/waybar/style/*.backup_* | grep "Thunder Glow"
+
+Step 2: Restore CSS
+  $ cp "~/.config/waybar/style/⚡ [Zenitsu] Thunder Glow.css.backup_YYYYMMDD_HHMMSS" \
+       "~/.config/waybar/style/⚡ [Zenitsu] Thunder Glow.css"
+
+Step 3: Restart Waybar
+  $ pkill waybar && waybar &
+
+COMPLETE RESET:
+
+If everything is broken, restore original files:
+  $ cd ~/.config/waybar
+  $ cp Modules ZenitsuModules
+  $ cp ModulesCustom ZenitsuModulesCustom
+  $ pkill waybar && waybar &
+
+Then reapply theme properly:
+  $ cd ~/Project_Zenitsu_Theme
+  $ ./apply_electrical_icons.sh
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🛠️  DIAGNOSTIC COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Check Waybar Status:
+  $ ps aux | grep waybar
+
+Check Waybar Version:
+  $ waybar -v
+
+Test Waybar Config:
+  $ waybar -l debug 2>&1 | head -50
+
+Check Nerd Fonts:
+  $ fc-list | grep -i "nerd\|jetbrains"
+
+List Recent Backups:
+  $ ls -lt ~/.config/waybar/*.backup_* | head -10
+
+Check CSS Animation:
+  $ grep -A 5 "spark-flash" ~/.config/waybar/style/*.css
+
+Check Icons in Modules:
+  $ grep -E '("format"|"format-wifi")' ~/.config/waybar/ZenitsuModules | head -20
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📞 QUICK REFERENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Essential Scripts:
+  • Apply icons:    ~/Project_Zenitsu_Theme/apply_electrical_icons.sh
+  • Fix everything: ~/Project_Zenitsu_Theme/fix_zenitsu_icons.sh
+  • Clean CSS:      ~/Project_Zenitsu_Theme/clean_css_duplicates.sh
+  • Full install:   ~/Project_Zenitsu_Theme/electrify_icons_and_sounds.sh
+
+Key Files:
+  • Modules:   ~/.config/waybar/ZenitsuModules
+  • Custom:    ~/.config/waybar/ZenitsuModulesCustom
+  • CSS:       ~/.config/waybar/style/⚡ [Zenitsu] Thunder Glow.css
+  • Config:    ~/.config/waybar/config
+
+Quick Fixes:
+  • Restart Waybar:        pkill waybar && waybar &
+  • Debug Waybar:          waybar -l debug
+  • Refresh fonts:         fc-cache -fv
+  • Test sound:            ~/Project_Zenitsu_Theme/sounds/play_spark.sh
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡⚡⚡ Thunder Breathing: First Form - Problem Elimination! ⚡⚡⚡
+
+If these solutions don't work, check:
+  • /tmp/waybar_debug.log for detailed errors
+  • Hyprland logs if using Hyprland
+  • System journal: journalctl --user -xeu waybar
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

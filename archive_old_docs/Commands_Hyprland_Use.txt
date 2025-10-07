@@ -1,0 +1,179 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                  HYPRLAND KEYBINDINGS QUICK REFERENCE                         ║
+║                     JaKooLit Hyprland Dotfiles                                ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🔍 QUICK TIP: Press SUPER + SHIFT + K for a searchable keybind helper!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Note: SUPER = Windows/Command key |  refers to SUPER key
+
+═══════════════════════════════════════════════════════════════════════════════
+  ESSENTIAL SYSTEM CONTROLS
+═══════════════════════════════════════════════════════════════════════════════
+
+  Ctrl Alt                      →  Delete: exec, hyprctl dispatch exit 0
+
+  SUPER                         →  Q: killactive,
+  SUPER Shift                   →  Q: exec, $scriptsDir/KillActiveProcess.sh
+  SUPER Shift                   →  E: exec, $scriptsDir/Kool_Quick_Settings.sh
+
+  Ctrl Alt                      →  L: exec, $scriptsDir/LockScreen.sh
+  Ctrl Alt                      →  P: exec, $scriptsDir/Wlogout.sh
+  SUPER Shift                   →  N: exec, swaync-client -t -sw
+  SUPER Shift                   →  code:10: movetoworkspace, 1
+  SUPER Shift                   →  code:11: movetoworkspace, 2
+  SUPER Shift                   →  code:12: movetoworkspace, 3
+  SUPER Shift                   →  code:13: movetoworkspace, 4
+  SUPER Shift                   →  code:14: movetoworkspace, 5
+  SUPER Shift                   →  code:15: movetoworkspace, 6
+  SUPER Shift                   →  code:16: movetoworkspace, 7
+  SUPER Shift                   →  code:17: movetoworkspace, 8
+  SUPER Shift                   →  code:18: movetoworkspace, 9
+  SUPER Shift                   →  code:19: movetoworkspace, 10
+  SUPER Shift                   →  E: exec, $scriptsDir/Kool_Quick_Settings.sh
+  SUPER Shift                   →  code:10: movetoworkspace, 1
+  SUPER Shift                   →  code:11: movetoworkspace, 2
+  SUPER Shift                   →  code:12: movetoworkspace, 3
+  SUPER Shift                   →  code:13: movetoworkspace, 4
+  SUPER Shift                   →  code:14: movetoworkspace, 5
+  SUPER Shift                   →  code:15: movetoworkspace, 6
+  SUPER Shift                   →  code:16: movetoworkspace, 7
+  SUPER Shift                   →  code:17: movetoworkspace, 8
+  SUPER Shift                   →  code:18: movetoworkspace, 9
+  SUPER Shift                   →  code:19: movetoworkspace, 10
+
+═══════════════════════════════════════════════════════════════════════════════
+  APPLICATION LAUNCHERS
+═══════════════════════════════════════════════════════════════════════════════
+
+  SUPER                         →  D: exec, pkill rofi || true && rofi -show drun -modi drun,filebrowser,run,window
+  SUPER                         →  Return: exec, $term
+  SUPER Shift                   →  Return: exec, $scriptsDir/Dropterminal.sh $term
+  SUPER                         →  E: exec, $files
+  SUPER Alt                     →  E: exec, $scriptsDir/RofiEmoji.sh
+  SUPER Alt                     →  SPACE: exec, hyprctl dispatch workspaceopt allfloat
+  SUPER                         →  B: exec, xdg-open https://
+  SUPER Ctrl Alt                →  B: exec, pkill -SIGUSR1 waybar
+  SUPER Ctrl                    →  B: exec, $scriptsDir/WaybarStyles.sh
+  SUPER Alt                     →  B: exec, $scriptsDir/WaybarLayout.sh
+
+═══════════════════════════════════════════════════════════════════════════════
+  WINDOW MANAGEMENT
+═══════════════════════════════════════════════════════════════════════════════
+
+Window Focus (SUPER + Arrow Keys):
+  SUPER                         →  left: movefocus, l
+  SUPER                         →  right: movefocus, r
+  SUPER                         →  up: movefocus, u
+  SUPER                         →  down: movefocus, d
+
+Window Movement (SUPER + CTRL + Arrow Keys):
+  SUPER Ctrl                    →  left: movewindow, l
+  SUPER Ctrl                    →  right: movewindow, r
+  SUPER Ctrl                    →  up: movewindow, u
+  SUPER Ctrl                    →  down: movewindow, d
+
+Window Resizing (SUPER + SHIFT + Arrow Keys):
+  SUPER Shift                   →  left: resizeactive,-50 0
+  SUPER Shift                   →  right: resizeactive,50 0
+  SUPER Shift                   →  up: resizeactive,0 -50
+  SUPER Shift                   →  down: resizeactive,0 50
+
+Window States:
+  SUPER                         →  SPACE: togglefloating,
+  SUPER Shift                   →  F: fullscreen
+  SUPER                         →  G: togglegroup
+
+═══════════════════════════════════════════════════════════════════════════════
+  WORKSPACE MANAGEMENT
+═══════════════════════════════════════════════════════════════════════════════
+
+Switch Workspaces:
+  SUPER + 1-9/0                   →  Switch to workspace 1-10
+  SUPER + Tab                     →  Next workspace
+  SUPER + Shift + Tab             →  Previous workspace
+  SUPER + Comma/Period            →  Scroll through workspaces
+
+Move Windows to Workspaces:
+  SUPER + SHIFT + 1-9/0           →  Move window to workspace 1-10
+  SUPER + CTRL + 1-9/0            →  Move window silently to workspace 1-10
+
+Special Workspace:
+  SUPER                         →  U: togglespecialworkspace,
+  SUPER Shift                   →  U: movetoworkspace, special
+
+═══════════════════════════════════════════════════════════════════════════════
+  SCREENSHOTS
+═══════════════════════════════════════════════════════════════════════════════
+
+  SUPER                         →  Print: exec, $scriptsDir/ScreenShot.sh --now
+  SUPER Shift                   →  Print: exec, $scriptsDir/ScreenShot.sh --area
+  SUPER Ctrl                    →  Print: exec, $scriptsDir/ScreenShot.sh --in5
+  SUPER Ctrl Shift              →  Print: exec, $scriptsDir/ScreenShot.sh --in10
+  Alt                           →  Print: exec, $scriptsDir/ScreenShot.sh --active
+
+═══════════════════════════════════════════════════════════════════════════════
+  MEDIA & VOLUME CONTROLS
+═══════════════════════════════════════════════════════════════════════════════
+
+  XF86AudioRaiseVolume            →  Increase volume
+  XF86AudioLowerVolume            →  Decrease volume
+  XF86AudioMute                   →  Toggle mute
+  XF86AudioMicMute                →  Toggle microphone mute
+  XF86AudioPlay/Pause             →  Play/Pause media
+  XF86AudioNext                   →  Next track
+  XF86AudioPrev                   →  Previous track
+
+═══════════════════════════════════════════════════════════════════════════════
+  FEATURES & EXTRAS
+═══════════════════════════════════════════════════════════════════════════════
+
+  SUPER                         →  H: exec, $scriptsDir/KeyHints.sh
+  SUPER Shift                   →  K: exec, $scriptsDir/KeyBinds.sh
+  SUPER                         →  W: exec, $UserScripts/WallpaperSelect.sh
+  SUPER Shift                   →  W: exec, $UserScripts/WallpaperEffects.sh
+  SUPER Alt                     →  R: exec, $scriptsDir/Refresh.sh
+  SUPER Alt                     →  E: exec, $scriptsDir/RofiEmoji.sh
+  SUPER                         →  S: exec, $scriptsDir/RofiSearch.sh
+  SUPER Shift                   →  G: exec, $scriptsDir/GameMode.sh
+  SUPER Alt                     →  V: exec, $scriptsDir/ClipManager.sh
+  SUPER Alt                     →  C: exec, $UserScripts/RofiCalc.sh
+
+═══════════════════════════════════════════════════════════════════════════════
+  WAYBAR (STATUS BAR) CONTROLS
+═══════════════════════════════════════════════════════════════════════════════
+
+  SUPER Ctrl                    →  B: exec, $scriptsDir/WaybarStyles.sh
+  SUPER Alt                     →  B: exec, $scriptsDir/WaybarLayout.sh
+  SUPER Ctrl Alt                →  B: exec, pkill -SIGUSR1 waybar
+
+═══════════════════════════════════════════════════════════════════════════════
+  LAYOUT CONTROLS
+═══════════════════════════════════════════════════════════════════════════════
+
+Master Layout:
+  SUPER Ctrl                    →  D: layoutmsg, removemaster
+  SUPER                         →  I: layoutmsg, addmaster
+  SUPER                         →  J: layoutmsg, cyclenext
+  SUPER                         →  K: layoutmsg, cycleprev
+  SUPER Ctrl                    →  Return: layoutmsg, swapwithmaster
+
+Dwindle Layout:
+  SUPER Shift                   →  I: togglesplit
+  SUPER                         →  P: pseudo,
+
+═══════════════════════════════════════════════════════════════════════════════
+  ADDITIONAL NOTES
+═══════════════════════════════════════════════════════════════════════════════
+
+• Many features include scripts from ~/.config/hypr/scripts/
+• User-defined keybinds can be added to ~/.config/hypr/UserConfigs/UserKeybinds.conf
+• For a complete list, check the configuration files directly
+• Mouse bindings: SUPER + Left Click = Move window, SUPER + Right Click = Resize
+
+═══════════════════════════════════════════════════════════════════════════════
+  Generated on: 2025-10-06 14:53:07
+  JaKooLit Hyprland Dotfiles: https://github.com/JaKooLit
+═══════════════════════════════════════════════════════════════════════════════

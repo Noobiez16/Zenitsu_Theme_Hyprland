@@ -1,0 +1,168 @@
+╔══════════════════════════════════════════════════════════════════╗
+║        ⚡ ZENITSU THEME - THUNDER BREATHING ICON GUIDE ⚡        ║
+║                  Waybar Module Customization                     ║
+╚══════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔗 NERD FONTS CHEAT SHEET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Official Resource: https://www.nerdfonts.com/cheat-sheet
+
+Search for these keywords to find Thunder Breathing themed icons:
+  • bolt
+  • flash  
+  • thunder
+  • electric
+  • spark
+  • lightning
+  • zap
+  • storm
+  • energy
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ CURATED THUNDER BREATHING ICONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LIGHTNING & THUNDER SYMBOLS:
+  •   (nf-fa-bolt) - Classic lightning bolt
+  •   (nf-md-flash) - Flash symbol
+  •   (nf-md-lightning_bolt) - Lightning bolt
+  •   (nf-md-lightning_bolt_outline) - Outlined bolt
+  •   (nf-weather-lightning) - Weather lightning
+  •   (nf-md-flash_outline) - Flash outline
+  •   (nf-fa-flash) - Alternative flash
+  •   (nf-md-weather_lightning) - Storm lightning
+
+ENERGY & POWER SYMBOLS:
+  •   (nf-md-electric_switch) - Electric switch
+  •   (nf-oct-zap) - Zap symbol
+  •   (nf-md-flash_circle) - Flash in circle
+  •   (nf-md-white_balance_sunny) - Energy radiance
+  •   (nf-md-weather_lightning_rainy) - Storm power
+
+SPEED & MOVEMENT (for Thunder Breathing speed):
+  •   (nf-md-run_fast) - Speed symbol
+  •   (nf-md-fast_forward) - Forward motion
+  •   (nf-fa-fighter_jet) - Velocity
+  •   (nf-md-speedometer) - Speed gauge
+  •   (nf-oct-rocket) - Swift movement
+
+SUGGESTED MODULE ICONS:
+  • Workspaces:  or  or 
+  • Network:  (wifi) with  (disconnected state)
+  • Volume:  /  /  with  overlay
+  • Battery:  (charging) and  (discharging)
+  • Updates:  with  flash
+  • CPU/Performance: 
+  • Clock:  or  (with flash accent)
+  • Power Menu: 
+  • Notifications:  with  overlay
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📝 HOW TO EDIT WAYBAR MODULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. LOCATE WAYBAR CONFIG FILES:
+   Main config: ~/.config/waybar/config.jsonc
+   Modules: ~/.config/waybar/modules/
+
+2. EDIT MODULE FILES:
+   Each module (network, battery, etc.) has its own file.
+   
+   Example - Edit network module:
+   $ nano ~/.config/waybar/modules/network.jsonc
+   
+   Look for "format" or "format-icons" sections:
+   
+   "format-wifi": "{icon}  {essid}",
+   "format-icons": ["", "", "", "", ""]
+   
+   Replace the icons with Thunder Breathing themed ones:
+   
+   "format-wifi": "  {essid}",  // Lightning wifi
+   "format-disconnected": "  Disconnected"
+
+3. COMMON ICON LOCATIONS IN WAYBAR:
+   • "format": The main display format string
+   • "format-icons": Array of icons for different states
+   • "format-charging": Battery charging state
+   • "format-alt": Alternative display format
+   • "tooltip-format": Tooltip icon/text
+
+4. EXAMPLE MODULE CUSTOMIZATION:
+
+   BATTERY MODULE (~/.config/waybar/modules/battery.jsonc):
+   ────────────────────────────────────────────────────────
+   "format": "{icon}  {capacity}%",
+   "format-charging": "  {capacity}%",  // Thunder charge!
+   "format-icons": ["", "", "", "", ""]
+
+   WORKSPACES MODULE:
+   ────────────────────────────────────────────────────────
+   "format": "{icon}",
+   "format-icons": {
+       "active": "",    // Lightning for active
+       "default": ""    // Circle for inactive
+   }
+
+5. RELOAD WAYBAR:
+   After editing, reload Waybar to see changes:
+   
+   🔑 KEYBINDING: SUPER + ALT + R
+   
+   Or manually:
+   $ pkill waybar && waybar &
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 THEMATIC DESIGN TIPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Use  (lightning bolt) as your primary "Thunder Breathing" icon
+• Combine icons creatively:  +  = Powered workspace
+• Keep it subtle - not every module needs a lightning bolt
+• Use flash/bolt icons for:
+  - Active/focused states
+  - Charging indicators  
+  - Performance/speed metrics
+  - Power-related functions
+
+• Reserve standard icons for:
+  - Passive states
+  - Background processes
+  - Non-electric functions
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎨 COLOR COORDINATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Your Zenitsu theme uses these colors:
+  • Haori Orange: #FFA237 (primary accent)
+  • Haori Shadow: #B57436 (secondary)
+  • Thunder Yellow: #FFE66D (highlights)
+
+Add color to icons in Waybar CSS:
+  ~/.config/waybar/style.css
+
+Example:
+  #battery.charging {
+      color: #FFE66D;  /* Thunder Yellow for charging */
+  }
+  
+  #workspaces button.active {
+      color: #FFA237;  /* Haori Orange for active workspace */
+  }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ Thunder Breathing: First Form - Thunderclap and Flash! ⚡
+
+Remember: The perfect icon is one that feels as swift and decisive
+as Zenitsu's single, overwhelming strike!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

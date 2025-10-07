@@ -1,0 +1,137 @@
+═══════════════════════════════════════════════════════════════════
+⚡ ZENITSU AGATSUMA THEME - QUICK START GUIDE ⚡
+═══════════════════════════════════════════════════════════════════
+
+PREPARATION CHECKLIST:
+═══════════════════════════════════════════════════════════════════
+
+Step 1: Download Assets
+───────────────────────────────────────────────────────────────────
+□ Zenitsu Wallpaper (1920x1080+)
+  • Visit: wallhaven.cc or wallpaperaccess.com
+  • Search: "Zenitsu Agatsuma demon slayer"
+  • Save to: ~/Pictures/zenitsu_theme/wallpapers/
+
+□ Zenitsu Chibi PNG (transparent)
+  • Visit: pngwing.com or deviantart.com
+  • Search: "Zenitsu chibi PNG transparent"
+  • Save to: ~/Pictures/zenitsu_theme/assets/
+
+□ Arch Linux Logo PNG
+  • Visit: archlinux.org/art/ or wikimedia commons
+  • Download transparent PNG or SVG
+  • Save to: ~/Pictures/zenitsu_theme/assets/
+
+Step 2: Create Custom Logo
+───────────────────────────────────────────────────────────────────
+□ Combine Zenitsu + Arch Logo
+  • Use GIMP, Photopea (browser), or ImageMagick
+  • Canvas: 512x512 pixels, transparent background
+  • Layout: Arch logo (left) + Zenitsu PNG (right)
+  • Save as: ~/Pictures/zenitsu_theme/logos/zenitsu_arch_logo.png
+
+  Quick GIMP method:
+  1. gimp &
+  2. File > New > 512x512, transparent
+  3. File > Open as Layers > arch_logo.png
+  4. File > Open as Layers > zenitsu_chibi.png
+  5. Arrange side by side
+  6. File > Export As > zenitsu_arch_logo.png
+
+═══════════════════════════════════════════════════════════════════
+INSTALLATION:
+═══════════════════════════════════════════════════════════════════
+
+1. Run the theme script:
+   $ cd ~
+   $ ./apply_zenitsu_theme.sh
+
+2. Follow on-screen instructions
+
+3. Reboot your system:
+   $ sudo reboot
+
+4. Enjoy your Zenitsu-themed desktop!
+
+═══════════════════════════════════════════════════════════════════
+WHAT GETS THEMED:
+═══════════════════════════════════════════════════════════════════
+
+✓ Wallpaper - Zenitsu image via swww
+✓ Colors - Yellow/orange palette system-wide
+✓ Waybar - Status bar with Zenitsu colors
+✓ Rofi - Application launcher themed
+✓ Kitty - Terminal with custom colors
+✓ Fastfetch - Custom Zenitsu + Arch logo
+✓ All applications using wallust templates
+
+═══════════════════════════════════════════════════════════════════
+COLOR PALETTE:
+═══════════════════════════════════════════════════════════════════
+
+Primary Colors:
+  #FFD700 - Gold (Primary Yellow)
+  #FFEB3B - Bright Yellow (Lightning)
+  #FF9800 - Orange (Hair tips)
+  #FF6F00 - Deep Orange
+  #FFF9C4 - Cream/Pale Yellow
+  #1A1A1A - Black (Background)
+  #FFFFFF - Pure White
+
+All 16 terminal colors pre-configured in wallust.toml
+
+═══════════════════════════════════════════════════════════════════
+TROUBLESHOOTING:
+═══════════════════════════════════════════════════════════════════
+
+Missing dependencies?
+  $ yay -S swww wallust fastfetch
+
+Logo not showing?
+  $ ls ~/Pictures/zenitsu_theme/logos/zenitsu_arch_logo.png
+  $ fastfetch --list-config-paths
+
+Colors not applying?
+  $ sudo reboot
+
+Waybar old colors?
+  $ killall waybar && waybar &
+
+═══════════════════════════════════════════════════════════════════
+FILES & LOCATIONS:
+═══════════════════════════════════════════════════════════════════
+
+~/apply_zenitsu_theme.sh          - Main script
+~/ZENITSU_THEME_PLAN.md           - Full documentation
+~/ZENITSU_QUICKSTART.txt          - This file
+~/Commands_Hyprland_Use.txt       - Hyprland commands
+
+~/Pictures/zenitsu_theme/
+  ├── wallpapers/                 - Place wallpapers here
+  ├── logos/                      - Custom logo location
+  └── assets/                     - Source PNGs
+
+~/.config/wallust/wallust.toml    - Color configuration
+~/.config/fastfetch/config.jsonc  - Logo configuration
+
+═══════════════════════════════════════════════════════════════════
+ASSET SEARCH QUICK LINKS:
+═══════════════════════════════════════════════════════════════════
+
+Wallpapers:
+  • https://wallhaven.cc/search?q=zenitsu+agatsuma
+  • https://www.wallpaperaccess.com/demon-slayer-zenitsu
+
+Zenitsu PNGs:
+  • https://www.pngwing.com/en/search?q=zenitsu
+  • https://www.deviantart.com/search?q=zenitsu+png
+
+Arch Logo:
+  • https://archlinux.org/art/
+  • https://commons.wikimedia.org/wiki/File:Archlinux-icon-crystal-64.svg
+
+═══════════════════════════════════════════════════════════════════
+
+For detailed instructions, see: ZENITSU_THEME_PLAN.md
+
+Ready to unleash Thunder Breathing on your desktop? ⚡
