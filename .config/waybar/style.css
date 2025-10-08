@@ -1,0 +1,76 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", FontAwesome, sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+/* Zenitsu Theme Color Palette */
+:root {
+    --zenitsu-yellow: #F7C873;
+    --zenitsu-orange: #FFA500;
+    --storm-gray: #4A4A4A;
+    --background-trans: rgba(28, 28, 28, 0.8);
+    --foreground: #DCDCCC;
+    --foreground-alt: #939393;
+    --border-color: #F7C873;
+}
+
+window#waybar {
+    background: var(--background-trans);
+    color: var(--foreground);
+    border-radius: 10px;
+    margin: 5px;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: var(--foreground-alt);
+}
+
+#workspaces button.focused {
+    color: var(--zenitsu-yellow);
+    background-color: var(--storm-gray);
+    border-radius: 10px;
+}
+
+#clock, #battery, #cpu, #memory, #temperature, #network, #pulseaudio, #tray {
+    padding: 0 10px;
+    margin: 2px 0;
+}
+
+#network.disconnected,
+#battery.critical:not(.charging),
+#temperature.critical {
+    color: var(--zenitsu-orange);
+}
+
+/* -- Performance-Optimized Animated Border for Waybar -- */
+window#waybar {
+    position: relative; /* Required for pseudo-element positioning */
+    overflow: hidden;   /* Clips the oversized pseudo-element */
+    border: 2px solid transparent; /* Creates space to see the animation */
+}
+
+window#waybar::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        var(--border-color),
+        transparent,
+        var(--border-color),
+        transparent
+    );
+    animation: rotate-border 4s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate-border {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
