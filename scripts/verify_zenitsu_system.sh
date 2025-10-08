@@ -1,129 +1,203 @@
 #!/bin/bash
 
-# --- Zenitsu Theme System Verification Script ---
+# Zenitsu Theme System Verification Script
+# Checks all components of the Zenitsu Thunder Glow theme
 
-# Color Codes
+echo "╔══════════════════════════════════════════════════════════════════╗"
+echo "║         ⚡ ZENITSU THEME SYSTEM VERIFICATION ⚡                 ║"
+echo "╚══════════════════════════════════════════════════════════════════╝"
+echo ""
+
+# Color codes
 GREEN='\033[0;32m'
-RED='\033[0;31m'
 YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
+RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-# Print status with color coding
-print_status() {
-    case "$2" in
-        "OK") echo -e "${GREEN}✓${NC} $1" ;;
-        "FAIL") echo -e "${RED}✗${NC} $1" ;;
-        "WARN") echo -e "${YELLOW}⚠${NC} $1" ;;
-        "INFO") echo -e "${BLUE}ℹ${NC} $1" ;;
-    esac
-}
-
-# --- Check Functions ---
-
-check_environment() {
-    print_status "Checking Desktop Environment..." "INFO"
-    if [[ "$XDG_CURRENT_DESKTOP" == *"Hyprland"* ]]; then
-        print_status "Hyprland session confirmed." "OK"
+# Check function
+check_item() {
+    if [ "$1" -eq 0 ]; then
+        echo -e "${GREEN}✓${NC} $2"
     else
-        print_status "Not running in Hyprland. Current DE: $XDG_CURRENT_DESKTOP" "FAIL"
+        echo -e "${RED}✗${NC} $2"
     fi
 }
 
-check_packages() {
-    print_status "Checking required packages..." "INFO"
-    local packages=("waybar" "swaync" "ttf-firacode-nerd" "nwg-look")
-    for pkg in "${packages[@]}"; do
-        if pacman -Q "$pkg" &>/dev/null; then
-            print_status "$pkg is installed." "OK"
-        else
-            print_status "$pkg is NOT installed. Please run 'sudo pacman -S $pkg'." "FAIL"
-        fi
-    done
-
-    # Check for Tela Yellow icon theme - simplified and robust
-    if pacman -Q tela-circle-icon-theme-yellow &>/dev/null; then
-        print_status "Tela Yellow Icon Theme is installed." "OK"
-    elif test -d /usr/share/icons/Tela-circle-yellow-dark; then
-        print_status "Tela Yellow Icon Theme found in system icons." "OK"
-    elif test -d ~/.local/share/icons/Tela-circle-yellow-dark; then
-        print_status "Tela Yellow Icon Theme found in user icons." "OK"
-    else
-        print_status "Tela Yellow Icon Theme not found. Install with: sudo pacman -S tela-circle-icon-theme-yellow" "FAIL"
-    fi
-}
-
-check_processes() {
-    print_status "Checking running services..." "INFO"
-    if pgrep -x "waybar" > /dev/null; then
-        print_status "Waybar process is active." "OK"
-    else
-        print_status "Waybar process is NOT running. Check Hyprland startup config." "FAIL"
-    fi
-    if pgrep -x "swaync" > /dev/null; then
-        print_status "Swaync process is active." "OK"
-    else
-        print_status "Swaync process is NOT running. Check Hyprland startup config." "FAIL"
-    fi
-}
-
-check_configs() {
-    print_status "Verifying key configuration settings..." "INFO"
-
-    # Hyprland: GTK Icon Theme Persistence
-    if grep -q "gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-yellow-dark'" ~/.config/hypr/hyprland.conf ~/.config/hypr/UserConfigs/*.conf 2>/dev/null; then
-        print_status "Hyprland enforces 'Tela-circle-yellow-dark' icon theme on startup." "OK"
-    else
-        print_status "Hyprland config is missing the gsettings command for yellow icon theme persistence." "WARN"
-    fi
-
-    # Waybar: Font & Transparency
-    if grep -q 'font-family: "FiraCode Nerd Font"' ~/.config/waybar/style.css 2>/dev/null || grep -q 'font-family: "FiraCode Nerd Font"' ~/.config/waybar/style/*css 2>/dev/null; then
-        print_status "Waybar CSS correctly references 'FiraCode Nerd Font'." "OK"
-    else
-        print_status "Waybar CSS font-family rule for Nerd Fonts is missing." "FAIL"
-    fi
-    if grep -q "background: alpha" ~/.config/waybar/style.css 2>/dev/null || grep -q "background: alpha" ~/.config/waybar/style/*css 2>/dev/null; then
-        print_status "Waybar CSS is configured for transparency." "OK"
-    else
-        print_status "Waybar CSS is not configured for transparency." "WARN"
-    fi
-
-    # Swaync: Positioning & Transparency
-    if grep -q '"control-center-margin-bottom": 45' ~/.config/swaync/config.json 2>/dev/null; then
-        print_status "Swaync margin is correctly set for floating Waybar." "OK"
-    else
-        print_status "Swaync 'control-center-margin-bottom' is incorrect. Notifications may be misaligned." "FAIL"
-    fi
-    if grep -q "background.*alpha" ~/.config/swaync/style.css 2>/dev/null; then
-        print_status "Swaync CSS is configured for transparency." "OK"
-    else
-        print_status "Swaync CSS is not configured for transparency." "WARN"
-    fi
-
-    # System: Active GTK Icon Theme
-    local current_icon_theme
-    current_icon_theme=$(gsettings get org.gnome.desktop.interface icon-theme 2>/dev/null)
-    if [[ "$current_icon_theme" == *"Tela-circle-yellow-dark"* ]]; then
-        print_status "System GTK Icon Theme is correctly set to 'Tela-circle-yellow-dark'." "OK"
-    elif [[ "$current_icon_theme" == *"Tela"* ]]; then
-        print_status "System GTK Icon Theme is $current_icon_theme. Expected 'Tela-circle-yellow-dark'. Run: gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-yellow-dark'" "WARN"
-    else
-        print_status "System GTK Icon Theme is $current_icon_theme. Install yellow theme with: sudo pacman -S tela-circle-icon-theme-yellow" "FAIL"
-    fi
-}
-
-# --- Main Execution ---
+echo "=== WAYBAR CONFIGURATION ==="
 echo ""
-echo "⚡⚡⚡ Zenitsu Theme System Verification ⚡⚡⚡"
+
+# Check Waybar is running
+pgrep -x waybar > /dev/null
+check_item $? "Waybar process running"
+
+# Check config symlink
+if [ -L ~/.config/waybar/config ]; then
+    TARGET=$(readlink -f ~/.config/waybar/config)
+    echo -e "${GREEN}✓${NC} Config symlink: $TARGET"
+    if [[ "$TARGET" == *"Zenitsu-Peony"* ]]; then
+        echo -e "${GREEN}  → Using Zenitsu-Peony layout${NC}"
+    fi
+else
+    echo -e "${RED}✗${NC} Config symlink not found"
+fi
+
+# Check style symlink
+if [ -L ~/.config/waybar/style.css ]; then
+    TARGET=$(readlink -f ~/.config/waybar/style.css)
+    echo -e "${GREEN}✓${NC} Style symlink: $TARGET"
+    if [[ "$TARGET" == *"Thunder Glow"* ]]; then
+        echo -e "${GREEN}  → Using Thunder Glow style${NC}"
+    fi
+else
+    echo -e "${RED}✗${NC} Style symlink not found"
+fi
+
 echo ""
-check_environment
+echo "=== THEME FILES ==="
 echo ""
-check_packages
+
+# Check Thunder Glow CSS exists
+[ -f "$HOME/Hyprland-Dots/config/waybar/style/⚡ [Zenitsu] Thunder Glow.css" ]
+check_item $? "Thunder Glow CSS file exists"
+
+# Check Zenitsu-Peony config exists  
+[ -f "$HOME/.config/waybar/configs/⚡ [BOT] Zenitsu-Peony" ]
+check_item $? "Zenitsu-Peony config exists"
+
+# Check ZenitsuModules exists
+[ -f "$HOME/Hyprland-Dots/config/waybar/ZenitsuModules" ]
+check_item $? "ZenitsuModules file exists"
+
+# Check ModulesWorkspaces exists
+[ -f "$HOME/Hyprland-Dots/config/waybar/ModulesWorkspaces" ]
+check_item $? "ModulesWorkspaces file exists"
+
 echo ""
-check_processes
+echo "=== HYPRLAND CONFIGURATION ==="
 echo ""
-check_configs
+
+# Check Hyprland is running
+pgrep -x Hyprland > /dev/null
+check_item $? "Hyprland process running"
+
+# Check UserAnimations.conf
+[ -f "$HOME/Hyprland-Dots/config/hypr/UserConfigs/UserAnimations.conf" ]
+check_item $? "UserAnimations.conf exists"
+
+# Check for borderangle animation
+if grep -q "borderangle" "$HOME/Hyprland-Dots/config/hypr/UserConfigs/UserAnimations.conf" 2>/dev/null; then
+    echo -e "${GREEN}✓${NC} Border angle animation configured"
+else
+    echo -e "${YELLOW}⚠${NC} Border angle animation not found"
+fi
+
+# Check UserDecorations.conf
+[ -f "$HOME/Hyprland-Dots/config/hypr/UserConfigs/UserDecorations.conf" ]
+check_item $? "UserDecorations.conf exists"
+
+# Check for electric border colors
+if grep -q "F7DC6F" "$HOME/Hyprland-Dots/config/hypr/UserConfigs/UserDecorations.conf" 2>/dev/null; then
+    echo -e "${GREEN}✓${NC} Electric border colors configured"
+else
+    echo -e "${YELLOW}⚠${NC} Electric border colors not found"
+fi
+
 echo ""
-echo "--- Verification Complete ---"
+echo "=== FONT SUPPORT ==="
+echo ""
+
+# Check for Nerd Fonts
+fc-list | grep -i "nerd" > /dev/null
+check_item $? "Nerd Fonts installed"
+
+# Check specific fonts
+fc-list | grep -i "firacode.*nerd" > /dev/null
+check_item $? "FiraCode Nerd Font available"
+
+fc-list | grep -i "jetbrains.*nerd" > /dev/null
+check_item $? "JetBrainsMono Nerd Font available"
+
+echo ""
+echo "=== ANIMATION FEATURES ==="
+echo ""
+
+# Check for electric-border-pulse animation in CSS
+if grep -q "electric-border-pulse" "$HOME/Hyprland-Dots/config/waybar/style/⚡ [Zenitsu] Thunder Glow.css" 2>/dev/null; then
+    echo -e "${GREEN}✓${NC} Waybar border pulse animation configured"
+else
+    echo -e "${YELLOW}⚠${NC} Waybar border pulse animation not found"
+fi
+
+# Check for lightning-flash animation
+if grep -q "lightning-flash" "$HOME/Hyprland-Dots/config/waybar/style/⚡ [Zenitsu] Thunder Glow.css" 2>/dev/null; then
+    echo -e "${GREEN}✓${NC} Lightning flash animation configured"
+else
+    echo -e "${YELLOW}⚠${NC} Lightning flash animation not found"
+fi
+
+echo ""
+echo "=== WORKSPACE ICONS ==="
+echo ""
+
+# Check workspace icon configuration
+if grep -q '""' "$HOME/Hyprland-Dots/config/waybar/ModulesWorkspaces" 2>/dev/null; then
+    echo -e "${GREEN}✓${NC} Lightning bolt workspace icons configured"
+else
+    echo -e "${YELLOW}⚠${NC} Lightning bolt workspace icons not found"
+fi
+
+echo ""
+echo "=== MODULE ICONS ==="
+echo ""
+
+# Check battery icons
+if grep -q "󰂎\|󰁺\|󰁻" "$HOME/Hyprland-Dots/config/waybar/ZenitsuModules" 2>/dev/null; then
+    echo -e "${GREEN}✓${NC} Battery icons configured"
+else
+    echo -e "${YELLOW}⚠${NC} Battery icons not found"
+fi
+
+# Check network icons
+if grep -q " \| " "$HOME/Hyprland-Dots/config/waybar/ZenitsuModules" 2>/dev/null; then
+    echo -e "${GREEN}✓${NC} Network icons configured"
+else
+    echo -e "${YELLOW}⚠${NC} Network icons not found"
+fi
+
+# Check pulseaudio icons
+if grep -q " \| " "$HOME/Hyprland-Dots/config/waybar/ZenitsuModules" 2>/dev/null; then
+    echo -e "${GREEN}✓${NC} Audio icons configured"
+else
+    echo -e "${YELLOW}⚠${NC} Audio icons not found"
+fi
+
+echo ""
+echo "=== SYSTEM STATUS ==="
+echo ""
+
+# Waybar status
+if pgrep -x waybar > /dev/null; then
+    WB_PID=$(pgrep -x waybar)
+    echo -e "${GREEN}✓${NC} Waybar running (PID: $WB_PID)"
+else
+    echo -e "${RED}✗${NC} Waybar not running"
+    echo -e "  ${YELLOW}→ Run: pkill waybar && waybar &${NC}"
+fi
+
+# Hyprland status
+if pgrep -x Hyprland > /dev/null; then
+    echo -e "${GREEN}✓${NC} Hyprland running"
+else
+    echo -e "${RED}✗${NC} Hyprland not running"
+fi
+
+echo ""
+echo "╔══════════════════════════════════════════════════════════════════╗"
+echo "║                    VERIFICATION COMPLETE                         ║"
+echo "╚══════════════════════════════════════════════════════════════════╝"
+echo ""
+echo "If Waybar is not displaying correctly, try:"
+echo "  1. pkill waybar && waybar &"
+echo "  2. Check ~/.config/waybar/ symlinks"
+echo "  3. Review Waybar logs: waybar 2>&1 | grep -i error"
 echo ""
