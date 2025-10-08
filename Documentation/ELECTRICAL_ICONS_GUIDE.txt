@@ -1,0 +1,170 @@
+╔══════════════════════════════════════════════════════════════════╗
+║        ⚡⚡⚡ ELECTRICAL ICONS REFERENCE GUIDE ⚡⚡⚡             ║
+║              Thunder Breathing Icon System                       ║
+╚══════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ INSTALLED ELECTRICAL ICONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NETWORK:
+  •   - Lightning Wifi (multiple signal strengths)
+  •   - Wired Ethernet with electrical spark
+  •   - Disconnected (no signal, crossed out)
+
+BLUETOOTH:
+  •   - Bluetooth with lightning
+  •   - Bluetooth with double lightning (connected)
+  •   - Disabled bluetooth
+
+BATTERY:
+  •    - Triple thunder charge (charging)
+  •    - Triple bolt (plugged in)
+  •  - Standard battery levels
+  •  - Full battery with spark
+
+VOLUME/AUDIO:
+  •   - Thunder sound (normal volume)
+  •   - Muted with electrical cross
+
+TEMPERATURE:
+  •   - Electric fire/heat indicator
+  •   - Critical temp with double sparks
+
+CLOCK:
+  •    - Lightning time (multiple sparks)
+  •    - Alternative clock with spark
+
+CPU & MEMORY:
+  •   - Electric CPU power core
+  •   - Electric memory/energy core
+
+CUSTOM ACTIONS:
+  •    - Menu with double lightning
+  •    - Power with triple sparks
+  •    - Lock with double lightning
+  •    - Updater with triple sparks
+  •    - Wallpaper with double lightning
+  •    - Theme toggle with double sparks
+  •    - Hints with double lightning
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎨 ICON DESIGN PHILOSOPHY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+All icons follow Zenitsu's Thunder Breathing aesthetic:
+
+SINGLE SPARK ():
+  • Used for basic indicators
+  • Represents stored electrical energy
+  • Used with: temperature, basic states
+
+DOUBLE SPARK ():
+  • Used for interactive elements
+  • Represents active electrical flow
+  • Used with: bluetooth, custom actions
+
+TRIPLE SPARK ():
+  • Used for power/charge indicators
+  • Represents maximum electrical output
+  • Used with: battery charging, power menu
+
+LIGHTNING BOLT ():
+  • Used for transmission/connectivity
+  • Represents electrical signals
+  • Used with: wifi, network, time
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔊 SPARK SOUND EFFECTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SOUND FILES LOCATION:
+  ~/Project_Zenitsu_Theme/sounds/
+
+AVAILABLE SOUNDS:
+  • electric_spark.wav - Quick electrical zap (80ms)
+  • thunder_click.wav - Thunder click sound (50ms)
+
+WHEN SOUNDS PLAY:
+  • Mouse click on ANY Waybar module
+  • Workspace switching
+  • Volume changes
+  • Any interactive element
+
+TO TEST SOUND:
+  $ ~/Project_Zenitsu_Theme/sounds/play_spark.sh
+
+TO ADJUST VOLUME:
+  Edit play_spark.sh and add volume control
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💥 CLICK SPARK ANIMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+VISUAL EFFECT:
+  When you click ANY module, you'll see:
+  • Instant bright yellow flash
+  • 40px intense glow burst
+  • Border changes to pure yellow (#ffff00)
+  • Background flashes yellow
+  • Duration: 150ms (very quick)
+
+SYNCHRONIZED WITH:
+  • Sound effect plays simultaneously
+  • Happens on :active CSS state (actual click)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔔 NOTIFICATION CENTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+THEMED FEATURES:
+  • Title: "⚡ Thunder Notifications"
+  • Electrical borders with pulsing glow
+  • Gradient title bar (orange → yellow)
+  • Hover effects with electrical crackle
+  • Critical notifications get intense glow
+  • Thunder yellow color scheme throughout
+
+TO OPEN:
+  • Usually mapped to a keybinding
+  • Or click notification icon in Waybar
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🛠️  CUSTOMIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TO CHANGE ICONS:
+  Edit: ~/.config/waybar/ZenitsuModules
+  
+  Example - Change wifi icon:
+  "format-wifi": " {icon}"
+  
+  Replace  with any electrical icon from Nerd Fonts
+
+TO CHANGE SOUND:
+  Replace files in ~/Project_Zenitsu_Theme/sounds/
+  Keep filenames the same or update play_spark.sh
+
+TO ADJUST CLICK FLASH:
+  Edit: ~/.config/waybar/style/⚡ [Zenitsu] Thunder Glow.css
+  Find @keyframes spark-flash
+  Adjust values for more/less intense flash
+
+TO DISABLE SOUNDS:
+  Comment out sound line in electric_click.sh
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡⚡⚡ Thunder Breathing: Complete Electrical System! ⚡⚡⚡
+
+Every icon now channels lightning!
+Every click produces a spark!
+Every interaction is electrifying!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
