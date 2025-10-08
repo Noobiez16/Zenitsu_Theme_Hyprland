@@ -1,0 +1,43 @@
+//* ⚡⚡⚡ ZENITSU GLOW - GNOME STYLE COMPACT ⚡⚡⚡ *//
+//* Thunder Breathing: Constant Form - Electric Pulse! *//
+
+{
+ 
+"include": [
+  "$HOME/.config/waybar/ZenitsuModules",
+  "$HOME/.config/waybar/ModulesWorkspaces",
+  "$HOME/.config/waybar/ZenitsuModulesCustom",
+  "$HOME/.config/waybar/ModulesGroups",
+  "$HOME/.config/waybar/UserModules",
+  ],
+"layer": "top",
+"exclusive": true,
+"passthrough": false,
+"position": "bottom",
+"spacing": 3,
+"fixed-center": true,
+"ipc": true,
+"margin-bottom": 4,
+"margin-left": 8,
+"margin-right": 8,
+"height": 36,
+	
+"modules-left": [
+	"hyprland/workspaces"
+	],
+  
+"modules-center": [
+	"clock#4"
+	], 
+	
+"modules-right": [
+	"custom/notification",
+	"custom/separator#blank",
+	"pulseaudio",
+	"custom/separator#blank",
+	"network",
+	"custom/separator#blank",
+	"tray"
+	],
+
+}	

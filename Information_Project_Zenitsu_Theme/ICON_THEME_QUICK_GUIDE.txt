@@ -1,0 +1,92 @@
+⚡⚡⚡ ZENITSU ICON THEME - QUICK INSTALLATION GUIDE ⚡⚡⚡
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AUTOMATED INSTALLATION (EASIEST)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Run this command:
+
+    ~/Project_Zenitsu_Theme/Scripts/install_zenitsu_icons.sh
+
+Then follow the prompts. Done!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MANUAL INSTALLATION (4 STEPS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Install Dependencies
+    sudo pacman -S git nwg-look --noconfirm
+
+Step 2: Install Tela Icon Theme (Yellow)
+    cd /tmp
+    git clone https://github.com/vinceliuice/Tela-icon-theme.git
+    cd Tela-icon-theme
+    ./install.sh -c yellow
+    cd ..
+
+Step 3: Apply Theme with nwg-look
+    nwg-look
+    → Go to "Icons" tab
+    → Select "Tela-yellow-dark"
+    → Click "Apply"
+    → Close nwg-look
+
+Step 4: Add to Hyprland Config
+    echo "exec-once = gsettings set org.gnome.desktop.interface icon-theme 'Tela-yellow-dark'" >> ~/.config/hypr/hyprland.conf
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VERIFICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Check if installed:
+    ls ~/.local/share/icons/ | grep -i tela
+
+Check if active:
+    gsettings get org.gnome.desktop.interface icon-theme
+
+Should output: 'Tela-yellow-dark'
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHAT YOU GET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Yellow/orange folder icons
+✓ Matching application icons
+✓ Consistent system-wide theme
+✓ Complements Zenitsu Waybar theme
+✓ Persists across reboots
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Icons not changing?
+  → Close and reopen GTK applications
+  → Run: gsettings set org.gnome.desktop.interface icon-theme 'Tela-yellow-dark'
+
+Theme not persisting after reboot?
+  → Check: grep "icon-theme" ~/.config/hypr/hyprland.conf
+  → Should see: exec-once = gsettings set...
+
+nwg-look not working?
+  → Reinstall: sudo pacman -S nwg-look --noconfirm
+  → Or manually create GTK configs (see full documentation)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BACKUP INFO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Backup002 Created:
+  Location: ~/.config/waybar/Backup_emergency_files/
+  Files: config, modules, groups, style.css
+  Backup001: Also preserved
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FULL DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+See: ~/Project_Zenitsu_Theme/ICON_THEME_INSTALLATION.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ Thunder Breathing: Icon Form - Lightning Fast Setup! ⚡

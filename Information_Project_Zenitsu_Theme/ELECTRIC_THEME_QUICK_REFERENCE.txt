@@ -1,0 +1,134 @@
+⚡⚡⚡ ZENITSU ELECTRIC THEME - QUICK REFERENCE ⚡⚡⚡
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COLOR PALETTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Zenitsu Yellow:    #F7DC6F  →  Primary accent, hover glow
+Haori Orange:      #F39C12  →  Borders, secondary accent
+Lightning Blue:    #5DADE2  →  Active workspace
+Charcoal Dark:     #212121  →  Bar background
+Group Background:  #1E1E2E  →  Module pills
+Text Primary:      #FDFEFE  →  Main text
+Text Secondary:    #BDBDBD  →  Inactive text
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HOVER EFFECTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+On Mouse Over:
+  ✓ Text turns yellow (#F7DC6F)
+  ✓ Background fades in (10% yellow tint)
+  ✓ Corners round (5px radius)
+  ✓ Electric glow appears (3 layers)
+  ✓ Transition: 150ms (lightning fast!)
+
+Glow Layers:
+  1. Inner:  2px white glow
+  2. Middle: 5px yellow glow
+  3. Outer:  8px orange glow
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ANIMATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Lightning Flash:
+  - Used for: Urgent states, critical alerts
+  - Effect: Pulsing electric glow
+  - Duration: 1-1.5 seconds infinite
+
+Electric Pulse:
+  - Used for: Active notifications
+  - Effect: Breathing glow
+  - Duration: 2 seconds alternate
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MODULE STATES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Workspaces:
+  Active    → Lightning blue background + glow
+  Hover     → Yellow tint + scale effect
+  Urgent    → Orange + lightning flash
+
+Clock:
+  Normal    → Bold yellow text
+  Hover     → Electric glow effect
+
+Hardware (CPU/RAM/Temp):
+  Normal    → Gray text in dark pill
+  Hover     → Yellow text + glow
+  Critical  → Orange + flashing (temp only)
+
+Battery:
+  Normal    → Standard hover effects
+  Charging  → Lightning blue color
+  Critical  → Red background + flash
+
+Network:
+  Normal       → Standard hover
+  Disconnected → Red text
+
+Audio:
+  Normal  → Standard hover
+  Muted   → Dimmed gray
+
+Notifications:
+  Normal     → Gray text
+  Active     → Orange + pulsing
+  DND Mode   → 60% opacity
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SPEED SPECS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Transitions:        150-200ms (lightning fast)
+Easing:            ease-out, cubic-bezier
+GPU Accelerated:   Yes (box-shadow, opacity)
+GTK3 Compatible:   100%
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BACKUP & RESTORE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Backup Location:
+  ~/.config/waybar/Backup_emergency_files/style_Backup001.css
+
+Restore Command:
+  cd ~/.config/waybar
+  cp Backup_emergency_files/style_Backup001.css style.css
+  killall waybar && waybar &
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VERIFICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Check Theme Active:
+  grep "ELECTRIC SPEED" ~/.config/waybar/style.css
+
+List Colors:
+  grep "@define-color" ~/.config/waybar/style.css
+
+Check Waybar:
+  ps aux | grep waybar
+
+Restart Waybar:
+  killall waybar && waybar &
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+KEY FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Fast 150ms transitions (electric speed)
+✓ 3-layer electric glow on hover
+✓ Lightning flash animations
+✓ GTK3 fully compatible
+✓ GPU accelerated performance
+✓ Professional clean design
+✓ Zenitsu character aesthetic
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ Thunder Breathing: Electric Form - Instant Strike Style! ⚡
+
+Hover any module to see the electric glow effect!

@@ -1,0 +1,107 @@
+//* ---- ⚡ ZENITSU THEME - THUNDER BREATHING CUSTOM MODULES ⚡ ---- *//
+
+{
+
+"custom/menu": {
+	"format": "   ",
+	"tooltip": false,
+	"on-click": "$HOME/.config/hypr/scripts/Menu.sh",
+	"on-click-right": "$HOME/.config/hypr/scripts/ChangeLayout.sh"
+},
+
+"custom/power": {
+	"format": "   ⏻ ",
+	"tooltip": true,
+	"on-click": "$HOME/.config/hypr/scripts/Wlogout.sh",
+	"tooltip-format": "⚡ Power Menu"
+},
+
+"custom/lock": {
+	"format": "   ",
+	"tooltip": true,
+	"on-click": "$HOME/.config/hypr/scripts/LockScreen.sh",
+	"tooltip-format": "⚡ Lock Screen"
+},
+
+"custom/updater": {
+	"format": "   ",
+	"exec": "$HOME/.config/hypr/scripts/systemupdate.sh",
+	"on-click": "$HOME/.config/hypr/scripts/systemupdate.sh up",
+	"interval": 300,
+	"tooltip": true,
+	"tooltip-format": "⚡ System Updates",
+	"return-type": "json"
+},
+
+"custom/cycle_wall": {
+	"format": "   ",
+	"on-click": "$HOME/.config/hypr/UserScripts/WallpaperRandom.sh",
+	"on-click-right": "$HOME/.config/hypr/UserScripts/WallpaperSelect.sh",
+	"on-click-middle": "$HOME/.config/hypr/scripts/WaybarStyles.sh",
+	"tooltip": true,
+	"tooltip-format": "⚡ Wallpaper Cycling"
+},
+
+"custom/light_dark": {
+	"format": "   ",
+	"on-click": "$HOME/.config/hypr/scripts/DarkLight.sh",
+	"on-click-right": "$HOME/.config/hypr/scripts/Refresh.sh",
+	"tooltip": true,
+	"tooltip-format": "⚡ Theme Toggle"
+},
+
+"custom/keybindhint": {
+	"format": "   ",
+	"tooltip": true,
+	"on-click": "$HOME/.config/hypr/scripts/KeyHints.sh",
+	"tooltip-format": "⚡ Keybind Hints"
+},
+
+"custom/notification": {
+	"tooltip": false,
+	"format": "{icon} {text}",
+	"format-icons": {
+		"notification": "󱅫",
+		"none": "󰂚",
+		"dnd-notification": "󰂛",
+		"dnd-none": "󰂜"
+	},
+	"return-type": "json",
+	"exec-if": "which swaync-client",
+	"exec": "swaync-client -swb",
+	"on-click": "swaync-client -t -sw",
+	"on-click-right": "swaync-client -d -sw",
+	"escape": true
+},
+
+"custom/separator#dot": {
+	"format": "",
+	"interval": "once",
+	"tooltip": false
+},
+
+"custom/separator#line": {
+	"format": "|",
+	"interval": "once",
+	"tooltip": false
+},
+
+"custom/separator#blank": {
+	"format": "",
+	"interval": "once",
+	"tooltip": false
+},
+
+"custom/separator#blank_2": {
+	"format": "   ",
+	"interval": "once",
+	"tooltip": false
+},
+
+"custom/separator#blank_3": {
+	"format": "   ",
+	"interval": "once",
+	"tooltip": false
+}
+
+}

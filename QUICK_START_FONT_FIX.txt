@@ -1,0 +1,81 @@
+⚡⚡⚡ ZENITSU THEME - QUICK START FONT FIX ⚡⚡⚡
+
+PROBLEM: Icons showing as empty squares in Waybar
+
+SOLUTION: 3 Simple Steps
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1: Install FiraCode Nerd Font
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Run this command:
+
+    sudo pacman -S ttf-firacode-nerd --noconfirm
+
+OR use the automated script:
+
+    ~/Project_Zenitsu_Theme/Scripts/install_firacode_nerd.sh
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 2: Refresh Font Cache
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    fc-cache -fv
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 3: Restart Waybar
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    killall waybar && waybar &
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WHAT WAS CHANGED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ ~/.config/waybar/style.css - Updated font-family with fallback chain
+✓ Font size increased from 13px to 16px for better readability
+✓ Added comprehensive font fallback support:
+  - FiraCode Nerd Font (primary)
+  - JetBrainsMono Nerd Font (fallback - already installed)
+  - Font Awesome 6/7 Free (icon fallback)
+  - sans-serif (system fallback)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+VERIFICATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Check if FiraCode is installed:
+
+    pacman -Q ttf-firacode-nerd
+
+List all available Nerd Fonts:
+
+    fc-list | grep -i "nerd"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TROUBLESHOOTING:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+If icons still don't show:
+
+1. Verify CSS is correct:
+   head -15 ~/.config/waybar/style.css
+
+2. Check Waybar logs:
+   killall waybar && waybar -l debug
+
+3. Restart Hyprland:
+   hyprctl reload
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For detailed documentation, see:
+~/Project_Zenitsu_Theme/FONT_FIX_DOCUMENTATION.md
+
+⚡ Thunder Breathing: Font Form - Icon Lightning Strike! ⚡

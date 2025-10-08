@@ -1,0 +1,477 @@
+/* ⚡⚡⚡ ZENITSU THEME - ELECTRIC SPEED STYLING ⚡⚡⚡ */
+/* Thunder Breathing: Complete Form - Lightning Strike Aesthetic! */
+
+/* ============================================================ */
+/* ZENITSU THEME PALETTE */
+/* ============================================================ */
+@define-color zenitsu-yellow #F7DC6F;
+@define-color haori-orange #F39C12;
+@define-color lightning-blue #5DADE2;
+@define-color charcoal-dark #212121;
+@define-color group-background #1E1E2E;
+@define-color text-primary #FDFEFE;
+@define-color text-secondary #BDBDBD;
+
+/* Additional theme colors for compatibility */
+@define-color zenitsu-dark #0d0d0d;
+@define-color zenitsu-bg #1a1a1a;
+@define-color zenitsu-lightning #f9ff5e;
+@define-color zenitsu-gold #F4D03F;
+@define-color zenitsu-white #FFFFFF;
+@define-color zenitsu-dimmed #E0E0E0;
+@define-color zenitsu-shadow #B57436;
+@define-color zenitsu-electric #ffff00;
+
+/* ============================================================ */
+/* ANIMATIONS - Electric Speed Theme */
+/* ============================================================ */
+@keyframes lightning-flash {
+  0% {
+    box-shadow: 0 0 5px rgba(247, 220, 111, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(247, 220, 111, 0.8),
+                0 0 25px rgba(243, 156, 18, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(247, 220, 111, 0.3);
+  }
+}
+
+@keyframes electric-pulse {
+  from {
+    box-shadow: 0 0 5px rgba(247, 220, 111, 0.4);
+  }
+  to {
+    box-shadow: 0 0 15px rgba(247, 220, 111, 0.7),
+                0 0 20px rgba(243, 156, 18, 0.5);
+  }
+}
+
+/* ============================================================ */
+/* GLOBAL & BASE STYLING */
+/* ============================================================ */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "FiraCode Nerd Font", "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 7 Free", sans-serif;
+    font-size: 16px;
+    min-height: 0;
+    font-weight: 600;
+}
+
+window#waybar {
+    background: @charcoal-dark;
+    color: @text-primary;
+    border-top: 2px solid @haori-orange;
+    box-shadow: 0 -2px 10px rgba(243, 156, 18, 0.3);
+}
+
+window#waybar.hidden {
+    opacity: 0.3;
+}
+
+/* ============================================================ */
+/* WORKSPACES MODULE - Electric Selection */
+/* ============================================================ */
+#workspaces {
+    margin: 0 5px;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    margin: 0 2px;
+    background-color: transparent;
+    color: @text-secondary;
+    border-radius: 8px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#workspaces button:hover {
+    background: rgba(247, 220, 111, 0.15);
+    color: @zenitsu-yellow;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+    color: @zenitsu-yellow;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(247, 220, 111, 0.5);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#workspaces button.urgent {
+    background-color: @haori-orange;
+    color: @text-primary;
+    animation: lightning-flash 1.5s ease-in-out infinite;
+}
+
+/* ============================================================ */
+/* CLOCK MODULE - Time Strike */
+/* ============================================================ */
+#clock,
+#clock\#2,
+#clock\#3,
+#clock\#4,
+#clock\#5 {
+    padding: 0 12px;
+    margin: 0 3px;
+    color: @zenitsu-yellow;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+#clock:hover,
+#clock\#2:hover,
+#clock\#3:hover,
+#clock\#4:hover,
+#clock\#5:hover {
+    color: @zenitsu-yellow;
+    background-color: rgba(247, 220, 111, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 2px #FFFFFF,
+                0 0 5px @zenitsu-yellow,
+                0 0 8px @haori-orange;
+}
+
+/* ============================================================ */
+/* HARDWARE GROUP - System Monitoring Pill */
+/* ============================================================ */
+#group-hardware-info {
+    background-color: @group-background;
+    border-radius: 10px;
+    padding: 0 5px;
+    margin: 5px 5px;
+    border: 1px solid rgba(247, 220, 111, 0.2);
+    transition: all 0.2s ease-out;
+}
+
+#group-hardware-info:hover {
+    border-color: @zenitsu-yellow;
+    box-shadow: 0 0 10px rgba(247, 220, 111, 0.4),
+                0 0 15px rgba(243, 156, 18, 0.3);
+}
+
+/* ============================================================ */
+/* CPU MODULE - Processor Power */
+/* ============================================================ */
+#cpu {
+    padding: 0 8px;
+    margin: 0 2px;
+    color: @text-secondary;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+#cpu:hover {
+    color: @zenitsu-yellow;
+    background-color: rgba(247, 220, 111, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 2px #FFFFFF,
+                0 0 5px @zenitsu-yellow,
+                0 0 8px @haori-orange;
+}
+
+/* ============================================================ */
+/* MEMORY MODULE - RAM Tracking */
+/* ============================================================ */
+#memory {
+    padding: 0 8px;
+    margin: 0 2px;
+    color: @text-secondary;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+#memory:hover {
+    color: @zenitsu-yellow;
+    background-color: rgba(247, 220, 111, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 2px #FFFFFF,
+                0 0 5px @zenitsu-yellow,
+                0 0 8px @haori-orange;
+}
+
+/* ============================================================ */
+/* TEMPERATURE MODULE - Thermal Monitor */
+/* ============================================================ */
+#temperature {
+    padding: 0 8px;
+    margin: 0 2px;
+    color: @text-secondary;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+#temperature:hover {
+    color: @zenitsu-yellow;
+    background-color: rgba(247, 220, 111, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 2px #FFFFFF,
+                0 0 5px @zenitsu-yellow,
+                0 0 8px @haori-orange;
+}
+
+#temperature.critical {
+    color: @haori-orange;
+    animation: lightning-flash 1s ease-in-out infinite;
+    font-weight: bold;
+}
+
+/* ============================================================ */
+/* BATTERY MODULE - Power Status */
+/* ============================================================ */
+#battery {
+    padding: 0 8px;
+    margin: 0 2px;
+    color: @text-secondary;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+#battery:hover {
+    color: @zenitsu-yellow;
+    background-color: rgba(247, 220, 111, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 2px #FFFFFF,
+                0 0 5px @zenitsu-yellow,
+                0 0 8px @haori-orange;
+}
+
+#battery.charging {
+    color: @lightning-blue;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: @text-primary;
+    border-radius: 5px;
+    padding: 0 8px;
+    animation: lightning-flash 1s ease-in-out infinite;
+}
+
+/* ============================================================ */
+/* NETWORK MODULE - Connection Status */
+/* ============================================================ */
+#network {
+    padding: 0 10px;
+    margin: 0 3px;
+    color: @text-secondary;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+#network:hover {
+    color: @zenitsu-yellow;
+    background-color: rgba(247, 220, 111, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 2px #FFFFFF,
+                0 0 5px @zenitsu-yellow,
+                0 0 8px @haori-orange;
+}
+
+#network.disconnected {
+    color: #f53c3c;
+}
+
+/* ============================================================ */
+/* PULSEAUDIO MODULE - Audio Control */
+/* ============================================================ */
+#pulseaudio {
+    padding: 0 10px;
+    margin: 0 3px;
+    color: @text-secondary;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+#pulseaudio:hover {
+    color: @zenitsu-yellow;
+    background-color: rgba(247, 220, 111, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 2px #FFFFFF,
+                0 0 5px @zenitsu-yellow,
+                0 0 8px @haori-orange;
+}
+
+#pulseaudio.muted {
+    color: #757575;
+}
+
+/* ============================================================ */
+/* TRAY MODULE - System Tray */
+/* ============================================================ */
+#tray {
+    padding: 0 10px;
+    margin: 0 5px;
+    color: @text-secondary;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    animation: lightning-flash 1.5s ease-in-out infinite;
+}
+
+/* ============================================================ */
+/* NOTIFICATION MODULE - Alert System */
+/* ============================================================ */
+#custom-notification {
+    padding: 0 8px;
+    margin: 0 5px;
+    color: @text-secondary;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+#custom-notification:hover {
+    color: @zenitsu-yellow;
+    background-color: rgba(247, 220, 111, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 2px #FFFFFF,
+                0 0 5px @zenitsu-yellow,
+                0 0 8px @haori-orange;
+}
+
+#custom-notification.notification {
+    color: @haori-orange;
+    animation: electric-pulse 2s ease-in-out infinite alternate;
+}
+
+#custom-notification.dnd-notification {
+    color: @text-secondary;
+    opacity: 0.6;
+}
+
+/* ============================================================ */
+/* CUSTOM SEPARATORS */
+/* ============================================================ */
+#custom-separator,
+#custom-separator\#blank,
+#custom-separator\#blank_2,
+#custom-separator\#blank_3,
+#custom-separator\#dot,
+#custom-separator\#line {
+    color: rgba(189, 189, 189, 0.3);
+    margin: 0 2px;
+    padding: 0;
+    background: transparent;
+}
+
+/* ============================================================ */
+/* BACKLIGHT MODULE */
+/* ============================================================ */
+#backlight {
+    padding: 0 8px;
+    margin: 0 2px;
+    color: @text-secondary;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+#backlight:hover {
+    color: @zenitsu-yellow;
+    background-color: rgba(247, 220, 111, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 2px #FFFFFF,
+                0 0 5px @zenitsu-yellow,
+                0 0 8px @haori-orange;
+}
+
+/* ============================================================ */
+/* BLUETOOTH MODULE */
+/* ============================================================ */
+#bluetooth {
+    padding: 0 8px;
+    margin: 0 2px;
+    color: @text-secondary;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+#bluetooth:hover {
+    color: @zenitsu-yellow;
+    background-color: rgba(247, 220, 111, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 2px #FFFFFF,
+                0 0 5px @zenitsu-yellow,
+                0 0 8px @haori-orange;
+}
+
+#bluetooth.disconnected {
+    color: #757575;
+}
+
+/* ============================================================ */
+/* DISK MODULE */
+/* ============================================================ */
+#disk {
+    padding: 0 8px;
+    margin: 0 2px;
+    color: @text-secondary;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+#disk:hover {
+    color: @zenitsu-yellow;
+    background-color: rgba(247, 220, 111, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 2px #FFFFFF,
+                0 0 5px @zenitsu-yellow,
+                0 0 8px @haori-orange;
+}
+
+/* ============================================================ */
+/* CUSTOM MODULES - User Defined */
+/* ============================================================ */
+#custom-menu,
+#custom-power,
+#custom-lock,
+#custom-updater,
+#custom-cycle_wall,
+#custom-light_dark,
+#custom-keybindhint {
+    padding: 0 8px;
+    margin: 0 2px;
+    color: @text-secondary;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+#custom-menu:hover,
+#custom-power:hover,
+#custom-lock:hover,
+#custom-updater:hover,
+#custom-cycle_wall:hover,
+#custom-light_dark:hover,
+#custom-keybindhint:hover {
+    color: @zenitsu-yellow;
+    background-color: rgba(247, 220, 111, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 2px #FFFFFF,
+                0 0 5px @zenitsu-yellow,
+                0 0 8px @haori-orange;
+}
+
+/* ============================================================ */
+/* TOOLTIP STYLING - Electric Information */
+/* ============================================================ */
+tooltip {
+    background: @group-background;
+    color: @text-primary;
+    border: 2px solid @haori-orange;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.4);
+}
+
+tooltip label {
+    color: @text-primary;
+    padding: 4px 8px;
+}
+
+/* ============================================================ */
+/* PERFORMANCE OPTIMIZATIONS */
+/* ============================================================ */
+/* Using opacity and box-shadow for animations ensures GPU acceleration */
+/* Fast transitions (150ms) maintain the "speed" theme aesthetic */
+/* Multi-layered box-shadows create the electric glow effect */
+/* Cubic-bezier easing functions provide snappy, responsive feel */
+
+/* ⚡ Thunder Breathing: Complete Style - Lightning Speed Achieved! ⚡ */

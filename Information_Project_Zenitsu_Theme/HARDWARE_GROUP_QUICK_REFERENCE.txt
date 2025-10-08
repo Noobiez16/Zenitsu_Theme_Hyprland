@@ -1,0 +1,71 @@
+⚡⚡⚡ ZENITSU THEME - HARDWARE GROUP QUICK REFERENCE ⚡⚡⚡
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WHAT WAS CHANGED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Created hardware-info group in ModulesGroups
+✓ Added group to modules-right in main config
+✓ Styled group as modern pill in style.css
+✓ Created Backup001 in Backup_emergency_files folder
+✓ Removed all old backup files
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GROUP MODULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CPU:         Shows processor usage (%)
+Memory:      Shows RAM usage (GB)
+Temperature: Shows system temp (°C)
+
+All grouped in a dark rounded pill container!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL APPEARANCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Normal:   Dark pill | Yellow text | Subtle orange glow
+Hover:    Orange border | Enhanced glow | Lightning yellow text
+Critical: Flashing yellow (when temp > 82°C)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BACKUP LOCATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+~/.config/waybar/Backup_emergency_files/
+
+Files:
+  - config_Backup001
+  - ZenitsuModules_Backup001
+  - ZenitsuModulesCustom_Backup001
+  - style_Backup001.css
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RESTORE ORIGINAL (IF NEEDED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+cd ~/.config/waybar
+cp Backup_emergency_files/config_Backup001 "configs/⚡ [BOT] Zenitsu-Peony"
+cp Backup_emergency_files/style_Backup001.css style.css
+killall waybar && waybar &
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+KEY FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Native Waybar groups (no CSS hacks)
+✓ Modern pill aesthetic
+✓ Zenitsu theme colors
+✓ Lightning animations
+✓ Hover effects
+✓ Clean architecture
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DETAILED DOCS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+See: ~/Project_Zenitsu_Theme/HARDWARE_GROUP_REFACTOR.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ Thunder Breathing: Group Form - Quick Strike Reference! ⚡
