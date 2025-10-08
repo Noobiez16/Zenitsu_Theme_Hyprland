@@ -1,131 +1,193 @@
 # ⚡ Zenitsu Theme for Hyprland/Waybar
 
 ![Theme Status](https://img.shields.io/badge/Status-Complete-success)
-![Version](https://img.shields.io/badge/Version-2.0-blue)
-![Style](https://img.shields.io/badge/Style-GNOME-orange)
+![Version](https://img.shields.io/badge/Version-3.0-blue)
+![Style](https://img.shields.io/badge/Style-Floating-yellow)
 
-Thunder Breathing themed Waybar configuration with intense electrical effects, inspired by Zenitsu Agatsuma from Demon Slayer.
+Thunder Breathing themed desktop environment with animated lightning effects and floating transparent design, inspired by Zenitsu Agatsuma from Demon Slayer.
 
 ## ✨ Features
 
-- 🌟 **Intense Electrical Glow** - Mega pulse animation around waybar
-- ⚡ **Interactive Effects** - Lightning on hover, spark on click
-- 🎨 **Thunder Color Scheme** - Orange & Yellow electrical palette
-- 🔧 **GNOME Style Layout** - Clean top bar with clock left, system right
-- 📦 **Compact Design** - Optimized horizontal spacing
-- 🔊 **Sound Effects** - Optional electrical spark sounds
+- 🌊 **Floating Waybar** - Centered, semi-transparent bar with rounded corners
+- ⚡ **Animated Lightning Borders** - Crackling 4-color gradient on active windows
+- 🎨 **Thunder Color Scheme** - Yellow, White, Blue, Orange electrical palette
+- 💎 **Transparent Windows** - 85% active, 75% inactive opacity with blur
+- 🔔 **Integrated Notifications** - Swaync positioned perfectly above Waybar
+- 🔧 **System Verification** - Automated health check script
+- 🎯 **Icon Theme** - Tela Yellow theme matching Zenitsu's haori
 
 ## 🚀 Quick Start
 
 ```bash
-cd ~/Project_Zenitsu_Theme
-./launch_zenitsu_gnome_style.sh
+# Verify system health
+~/Project_Zenitsu_Theme/Scripts/verify_zenitsu_system.sh
+
+# Install yellow icons (if needed)
+~/Project_Zenitsu_Theme/Scripts/install_yellow_icons.sh
 ```
 
 ## 📋 Requirements
 
 - Hyprland (Wayland compositor)
 - Waybar (Status bar)
-- Nerd Fonts (For icons)
+- Swaync (Notification center)
+- FiraCode Nerd Font (For icons)
+- Tela Yellow Icon Theme
   ```bash
-  sudo pacman -S ttf-jetbrains-mono-nerd
+  sudo pacman -S ttf-firacode-nerd tela-circle-icon-theme-yellow
   fc-cache -fv
   ```
 
 ## 📖 Documentation
 
+- **[SYSTEM_STATUS.md](SYSTEM_STATUS.md)** - Current system configuration status
 - **[GENERAL_UPDATE.md](GENERAL_UPDATE.md)** - Complete project documentation
-- **[TROUBLESHOOTING_GUIDE.txt](TROUBLESHOOTING_GUIDE.txt)** - Problem solving guide
-- **[ZENITSU_GNOME_STYLE.txt](ZENITSU_GNOME_STYLE.txt)** - GNOME layout details
-- **[EMPEZAR_AQUI.txt](EMPEZAR_AQUI.txt)** - Quick start (Spanish)
+- **Scripts/verify_zenitsu_system.sh** - Automated system verification
 
-## 🎨 Preview
+## 🎨 Design Overview
 
-### Layout (GNOME Style)
+### Floating Waybar Layout
 ```
-┌─────────────────────────────────────────────────────────┐
-│ ⚡ Clock                              🔊 📶 🔋 📱     │
-└─────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────┐
+│                                                            │
+│   ╔═══════════════════════════════════════════════════╗   │
+│   ║ ⚡ Workspaces  |  Clock  |  🖥️ 💾 🌡️ 🔊 📶 🔔  ║   │
+│   ╚═══════════════════════════════════════════════════╝   │
+│                         ↑                                  │
+│                   (floating, 1800px wide)                  │
+└────────────────────────────────────────────────────────────┘
 ```
 
-### Effects
-- **Mega Electric Pulse**: 20-60px glowing aura (constant)
-- **Electric Border Pulse**: Color-changing borders (1.5s animation)
-- **Lightning Crackle**: Intense glow on hover (0.5s)
-- **Thunder Strike**: Super glow on active workspace (1s)
-- **Spark Flash**: Yellow flash on click (200ms)
+### Window Border Animation
+Active windows feature a continuously rotating 4-color gradient:
+- **Zenitsu Yellow** (`#F7DC6F`) → **Bright White** (`#FFFFFF`) → 
+- **Lightning Blue** (`#5DADE2`) → **Haori Orange** (`#F39C12`)
+
+### Transparency & Blur
+- **Waybar**: 85% opacity, 15px rounded corners
+- **Active Windows**: 85% opacity, 15px rounded corners
+- **Inactive Windows**: 75% opacity
+- **Blur**: Enabled with 3-pixel radius
 
 ### Colors
-- Haori Orange: `#FFA237`
-- Thunder Yellow: `#FFE66D`
-- Vibrant Yellow: `#f9ff5e`
-- Intense Yellow: `#ffff00`
+- Zenitsu Yellow: `#F7DC6F`
+- Haori Orange: `#F39C12`
+- Lightning Blue: `#5DADE2`
+- Charcoal Dark: `#212121`
 
 ## 🛠️ Essential Scripts
 
 | Script | Purpose |
 |--------|---------|
-| `launch_zenitsu_gnome_style.sh` | Launch theme (main) |
-| `apply_electrical_icons.sh` | Apply electrical icons |
-| `clean_css_duplicates.sh` | Clean CSS issues |
-| `fix_zenitsu_icons.sh` | Fix all issues |
-| `electrify_icons_and_sounds.sh` | Full setup with sounds |
+| `verify_zenitsu_system.sh` | Complete system health check |
+| `install_yellow_icons.sh` | Install and apply Tela Yellow icons |
+| `launch_zenitsu_gnome_style.sh` | Launch theme (legacy) |
+| `test_zenitsu_notifications.sh` | Test notification styling |
 
-## 🔧 Configuration
+## 🔧 Configuration Files
 
-### Files
-- Config: `~/.config/waybar/configs/⚡ [BOT] Zenitsu-Peony`
-- Style: `~/.config/waybar/style/⚡ [Zenitsu] Thunder Glow.css`
+### Waybar
+- **Config**: `~/.config/waybar/configs/⚡ [BOT] Zenitsu-Peony`
+  - Width: 1800px
+  - Margins: 60px left/right, 4px bottom
+  - Height: 36px
+  
+- **Style**: `~/.config/waybar/style/⚡ [Zenitsu] Thunder Glow.css`
+  - Border-radius: 15px
+  - Background: alpha(@charcoal-dark, 0.85)
 
-### Customization
+### Hyprland
+- **Decorations**: `~/.config/hypr/UserConfigs/UserDecorations.conf`
+  - Active border: 4-color gradient (animated)
+  - Rounding: 15px
+  - Opacity: 85% active, 75% inactive
+  
+- **Animations**: `~/.config/hypr/UserConfigs/UserAnimations.conf`
+  - Borderangle: loop animation (speed 8)
+  
+- **Startup**: `~/.config/hypr/UserConfigs/Startup_Apps.conf`
+  - Icon theme: Tela-circle-yellow-dark
 
-**Make more compact:**
-```bash
-nano ~/.config/waybar/style/"⚡ [Zenitsu] Thunder Glow.css"
-# Change: padding: 2px 8px; to padding: 2px 6px;
-```
-
-**Adjust glow intensity:**
-```css
-/* Find @keyframes mega-electric-pulse */
-box-shadow: 0 0 30px 8px rgba(249, 255, 94, 0.8); /* More intense */
-```
+### Swaync
+- **Config**: `~/.config/swaync/config.json`
+  - Bottom margin: 45px (clears Waybar)
+  - Right margin: 65px (aligned with Waybar)
+  
+- **Style**: `~/.config/swaync/style.css`
+  - Transparency: alpha(@charcoal-dark, 0.85)
+  - Border-radius: 15px
 
 ## 🐛 Troubleshooting
 
+**Run system verification first:**
+```bash
+~/Project_Zenitsu_Theme/Scripts/verify_zenitsu_system.sh
+```
+
 **Icons show as boxes:**
 ```bash
-sudo pacman -S ttf-jetbrains-mono-nerd
+sudo pacman -S ttf-firacode-nerd
 fc-cache -fv
 pkill waybar && waybar &
 ```
 
-**Waybar won't start:**
+**Wrong icon theme:**
 ```bash
-waybar -l debug  # Check errors
+~/Project_Zenitsu_Theme/Scripts/install_yellow_icons.sh
 ```
 
-**Complete fix:**
+**Waybar not floating:**
 ```bash
-./fix_zenitsu_icons.sh
+hyprctl reload  # Reload Hyprland config
 ```
 
-See [TROUBLESHOOTING_GUIDE.txt](TROUBLESHOOTING_GUIDE.txt) for more help.
+**Notifications overlap Waybar:**
+```bash
+# Verify swaync margins in ~/.config/swaync/config.json
+# Should be: "control-center-margin-bottom": 45
+killall swaync && swaync &
+```
 
 ## 📁 Project Structure
 
 ```
 Project_Zenitsu_Theme/
-├── README.md                      ← Quick overview
-├── GENERAL_UPDATE.md              ← Complete documentation
-├── launch_zenitsu_gnome_style.sh  ← Main launcher
-├── apply_electrical_icons.sh      ← Icon setup
-├── fix_zenitsu_icons.sh           ← Fix utility
-├── sounds/                        ← Sound effects
-└── archive_*/                     ← Old files
+├── README.md                           ← This file
+├── SYSTEM_STATUS.md                    ← Current configuration status
+├── GENERAL_UPDATE.md                   ← Complete documentation
+├── copilot_github.md                   ← Development instructions
+├── Scripts/
+│   ├── verify_zenitsu_system.sh        ← System health check
+│   ├── install_yellow_icons.sh         ← Icon installer
+│   ├── test_zenitsu_notifications.sh   ← Test notifications
+│   └── launch_zenitsu_gnome_style.sh   ← Legacy launcher
+├── sounds/                             ← Sound effects
+└── archive_*/                          ← Old files
+
+Config Files (in ~/.config/):
+├── waybar/
+│   ├── configs/⚡ [BOT] Zenitsu-Peony
+│   └── style/⚡ [Zenitsu] Thunder Glow.css
+├── hypr/UserConfigs/
+│   ├── UserDecorations.conf            ← Window styling
+│   ├── UserAnimations.conf             ← Border animation
+│   └── Startup_Apps.conf               ← Icon theme
+└── swaync/
+    ├── config.json                     ← Notification positioning
+    └── style.css                       ← Notification styling
 ```
 
 ## 📜 Changelog
+
+### v3.0 - Floating Lightning Edition (Oct 8, 2024)
+- ✅ **Floating Waybar** - Centered 1800px bar with 60px margins
+- ✅ **Animated Lightning Borders** - 4-color crackling gradient
+- ✅ **Transparent Windows** - 85%/75% opacity with 15px rounding
+- ✅ **Integrated Swaync** - Positioned above Waybar with matching style
+- ✅ **Font Fixes** - Proper Nerd Font rendering for all icons
+- ✅ **Icon Theme** - Tela Yellow matching Zenitsu's color scheme
+- ✅ **System Verification** - Automated health check script
+- ✅ **Comprehensive Docs** - Updated all documentation
 
 ### v2.0 - GNOME Style Edition (Oct 6, 2024)
 - ✅ GNOME Shell style layout (top bar, clock left)
